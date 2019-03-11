@@ -1,0 +1,21 @@
+<apex:page standardController="Account" recordSetVar="Accounts">
+    <apex:form >
+    <apex:pageBlock title="Account Information" id="Account_list">
+        Filter: 
+            <apex:selectList value="{! filterId }" size="1">
+                <apex:selectOptions value="{! listViewOptions }"/>
+                <apex:actionSupport event="onchange" reRender="Account_list"/>
+            </apex:selectList>
+        <br/>
+         <br/>
+        <apex:outputText value="Account Name"></apex:outputText>
+        <br/>
+         <br/>
+        <apex:repeat value="{!Accounts}" var="a">
+            <br/><li>{! a.Name}<br/>
+            <apex:outputLink value="https://na49.lightning.force.com/lightning/r/Account/{!a.Id}/view">{!a.Id} 's Related List</apex:outputLink>       
+                </li>
+        </apex:repeat>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

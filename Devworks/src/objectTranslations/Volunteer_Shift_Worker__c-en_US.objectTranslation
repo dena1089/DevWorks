@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Volunteer Shift Worker</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Volunteer Shift Workers</value>
+    </caseValues>
+    <fields>
+        <label><!-- IsShiftVolunteer --></label>
+        <name>IsShiftVolunteer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shift End Time --></label>
+        <name>Shift_End_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shift Hours --></label>
+        <name>Shift_Hours__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shift Start Time --></label>
+        <name>Shift_Start_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Canceled</masterLabel>
+            <translation><!-- Canceled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Confirmed</masterLabel>
+            <translation><!-- Confirmed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No-Show</masterLabel>
+            <translation><!-- No-Show --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Approval</masterLabel>
+            <translation><!-- Pending Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unconfirmed</masterLabel>
+            <translation><!-- Unconfirmed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Volunteer Activity --></label>
+        <name>Volunteer_Activity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Volunteer Job --></label>
+        <name>Volunteer_Job__c</name>
+    </fields>
+    <fields>
+        <label><!-- Volunteer Organization --></label>
+        <name>Volunteer_Organization__c</name>
+    </fields>
+    <fields>
+        <label><!-- Volunteer Shift --></label>
+        <name>Volunteer_Shift__c</name>
+        <relationshipLabel><!-- Volunteer Shift Workers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Volunteer --></label>
+        <name>Volunteer__c</name>
+        <relationshipLabel><!-- Volunteer Shift Workers --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,14 @@
+.THIS .GrpBtn{
+   background:#F9D1AF no-repeat;
+    outline-color: transparent ;
+    color:#191919;
+}
+.THIS .slds-button:hover {
+    background: #F9D1AF no-repeat;
+    outline-color: transparent;
+}
+
+.THIS .slds-button:focus {
+    background: #F9D1AF no-repeat;
+    outline-color: transparent ;
+}

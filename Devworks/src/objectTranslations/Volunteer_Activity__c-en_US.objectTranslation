@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Volunteer Activity</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Volunteer Activities</value>
+    </caseValues>
+    <fields>
+        <label><!-- Volunteer Organization --></label>
+        <lookupFilter>
+            <errorMessage><!-- Please select Volunteer Organization that are accepting activities --></errorMessage>
+            <informationalMessage><!-- Please select Volunteer Organization that have Accepting activities as their volunteer Organization status --></informationalMessage>
+        </lookupFilter>
+        <name>Volunteer_Organization__c</name>
+        <relationshipLabel><!-- Volunteer Activities --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,14 @@
+.THIS .customButton{
+   background:lightblue no-repeat;
+    outline-color: transparent ;
+    color:black;
+}
+.THIS .slds-button:hover {
+    background: lightblue no-repeat;
+    outline-color: transparent;
+}
+
+.THIS .slds-button:focus {
+    background: lightblue no-repeat;
+    outline-color: transparent ;
+}

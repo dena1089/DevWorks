@@ -1,0 +1,23 @@
+<aura:component controller="CampingListController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="addItem" event="c:addItemEvent" action="{!c.handleAddItem}"/>
+    <aura:attribute name="items" type ="Camping_Item__c[]"/>                      
+	<lightning:layout>
+        <lightning:layoutItem padding="around-small" size="6">
+            <!-- CREATE NEW Camping -->
+            <c:campingListForm/>
+            <lightning:card title="Camping Items">
+                <div class="slds-card slds-p-top--medium">
+                    <section class="slds-card__body">
+                        <div id="list" class="row">
+                            <aura:iteration items="{!v.items}" var="cmp">
+                                <c:campingListItem item="{!cmp}"/>
+                            </aura:iteration>
+                        </div>
+                    </section>
+                </div>
+            </lightning:card>
+    		<!-- / CREATE NEW CAMPING -->
+        </lightning:layoutItem>
+    </lightning:layout>   
+</aura:component>

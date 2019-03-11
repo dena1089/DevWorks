@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MDM</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MDMs</value>
+    </caseValues>
+    <fields>
+        <label><!-- External Id --></label>
+        <name>External_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- MasterRecordId --></label>
+        <name>MasterRecordId__c</name>
+    </fields>
+    <fields>
+        <label><!-- RecordType --></label>
+        <name>RecordType__c</name>
+        <picklistValues>
+            <masterLabel>Account</masterLabel>
+            <translation><!-- Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Account</masterLabel>
+            <translation><!-- Business Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Contact</masterLabel>
+            <translation><!-- Business Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact</masterLabel>
+            <translation><!-- Contact --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Record Status --></label>
+        <name>Record_Status__c</name>
+        <picklistValues>
+            <masterLabel>Duplicate</masterLabel>
+            <translation><!-- Duplicate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original</masterLabel>
+            <translation><!-- Original --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Void</masterLabel>
+            <translation><!-- Void --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- System Name --></label>
+        <name>System_Name__c</name>
+        <picklistValues>
+            <masterLabel>CFX</masterLabel>
+            <translation><!-- CFX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CIF</masterLabel>
+            <translation><!-- CIF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GEN</masterLabel>
+            <translation><!-- GEN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OLNACS</masterLabel>
+            <translation><!-- OLNACS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAGE</masterLabel>
+            <translation><!-- RAGE --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>MDM Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

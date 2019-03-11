@@ -1,0 +1,320 @@
+<aura:component controller="AccountRecordDetail" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<aura:attribute name="AccntDetail" type="Account"/>
+    <aura:attribute name="ConDetails" type="Contact[]"/>
+    <aura:attribute name="OptyDetails" type="Opportunity[]"/>
+    <aura:attribute name="CaseDetails" type="Case[]"/>
+    <aura:attribute name="ActDetails" type="Event[]"/>
+    <aura:attribute name="OrdDetails" type="Order[]"/>
+    <aura:attribute name="NoteDetails" type="Note[]"/>
+    <aura:attribute name="AttDetails" type="Attachment[]"/>
+    <aura:attribute name="backgroundImageURL" type="String" default=""/>
+    <aura:attribute name="AccountId" type="Id" default="{!v.recordId}" />
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <div class="c-container" style="{!'position: relative; height: 30px; background:' + ' url(' + v.backgroundImageURL +') no-repeat;background-position: left;background-size: 300px 100px;background-color: rgb(121, 215, 255);border: 2px solid black;padding: 25px;margin-top=500px;'}"/>
+    <lightning:tile label="Account">
+        <lightning:tile label="{!v.AccntDetail.Name}" class="slds-text-heading_large slds-text-title_bold"/>
+        <aura:set attribute="media">
+                                        <lightning:icon iconName="standard:account"/>
+                                    </aura:set>
+                                    
+    </lightning:tile>
+    <div class="c-container">
+        <lightning:layout >
+            <lightning:layoutItem padding="around-large">
+                <div class="header-column">
+                    <p class="field-title" title="CustomerId">Customer ID</p>
+                    <p>{!v.AccntDetail.Customer_ID__c}</p>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-large">
+                <div class="header-column">
+                    <p class="field-title" title="ActAccountName">Name</p>
+                    <p>{!v.AccntDetail.Name}</p>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-large">
+                <div class="header-column">
+                    <p class="field-title" title="ActAnnualRevenue">Annual Revenue</p>
+                    <p>{!v.AccntDetail.AnnualRevenue}</p>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-large">
+                <div class="header-column">
+                    <p class="field-title" title="ActPhone">Phone</p>
+					<p>{!v.AccntDetail.Phone}</p>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-large">
+                <div class="header-column">
+                    <p class="field-title" title="ActType">Type</p>
+                    <P>{!v.AccntDetail.Type}</P>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-large">
+                <div class="header-column">
+                    <p class="field-title" title="ActRating">Rating</p>
+                    <P>{!v.AccntDetail.Rating}</P>
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+<div class="slds-box slds-theme_info slds-text-align--left">
+    <div class="slds-text-heading--small" >
+        <lightning:layout>
+        <lightning:layoutItem padding="around-small">
+        <lightning:icon iconName="standard:account" size="medium"/>
+                <lightning:button class="GrpBtn" label="Account Detail" title="Neutral action1" onclick="{! c.handleClickAccount }"/>
+    </lightning:layoutItem>
+     <lightning:layoutItem padding="around-small" class ="slds-dl_vertical">
+        <lightning:icon iconName="standard:contact" size="medium"/>
+                <lightning:button class="GrpBtn" label="Contacts" title="Neutral action1" onclick="{! c.handleClickContact }"/>
+    </lightning:layoutItem>
+       <lightning:layoutItem padding="around-small">
+        <lightning:icon iconName="standard:opportunity" size="medium"/>
+           <lightning:button class="GrpBtn" label="Opportunities" title="Neutral action" onclick="{! c.handleClickOpty }"/>
+        </lightning:layoutItem>
+    <lightning:layoutItem padding="around-small">
+        <lightning:icon iconName="standard:case" size="medium"/>
+        <lightning:button class="GrpBtn" label="Cases" title="Neutral action" onclick="{! c.handleClickCase }"/>
+    </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+        <lightning:icon iconName="standard:action_list_component" size="medium"/>
+        <lightning:button class="GrpBtn" label="Activities" title="Neutral action" onclick="{! c.handleClickActivity }"/>   
+    </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+    <div class="slds-text-heading--small" >
+<lightning:layout>
+    <lightning:layoutItem padding="around-small">
+        <lightning:icon iconName="standard:orders" size="medium"/>
+            <lightning:button class="GrpBtn" label="Orders" title="Neutral action" onclick="{! c.handleClickOrder }"/>
+    </lightning:layoutItem>
+    <lightning:layoutItem padding="around-medium">
+        <lightning:icon iconName="standard:note" size="medium"/>
+        <lightning:button class="GrpBtn" label="Notes" title="Neutral action" onclick="{! c.handleClickNotes }"/>
+    </lightning:layoutItem>
+    <lightning:layoutItem padding="around-medium">
+        <lightning:icon iconName="standard:file" size="medium"/>
+        <lightning:button class="GrpBtn" label="Attachments" title="Neutral action" onclick="{! c.handleClickAtt }"/>
+    </lightning:layoutItem>    
+    </lightning:layout>
+        </div>
+    </div>
+    
+    <!-- Contact Details-->
+    <div class="slds-box">
+        <div aura:id="AccountDetail" class="clsAccountDetail">         
+            <lightning:card title="Account Details">
+                <force:recordView recordId="{!v.recordId}" />
+            </lightning:card>
+        </div>
+        <div aura:id="ContactDetail" class="clsContactDetail">         
+            <lightning:card title="Contact Details">
+                <lightning:layout multipleRows="true">  
+                    <aura:iteration items="{!v.ConDetails}" var="ConRec" >
+                        <lightning:layoutItem padding="around-small" size="6">  
+                            <div aura:id="Tilu" class="slds-box">
+                                <lightning:tile label="{!ConRec.Name}">
+                                    <aura:set attribute="media">
+                                        <lightning:icon iconName="standard:contact"/>
+                                    </aura:set>
+                                    <dl class="slds-dl_horizontal">
+                                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate" id="L1">Title: {!ConRec.Title}</p>
+                                        </dd>
+                                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Email: {!ConRec.email}</p>
+                                        </dd>                   
+                                        <dt class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Phone: {!ConRec.Phone}</p>
+                                        </dt>                  
+                                    </dl>
+                                </lightning:tile>
+                            </div> 
+                        </lightning:layoutItem>
+                    </aura:iteration>
+                </lightning:layout>           
+            </lightning:card>
+        </div>
+<!-- Opportunity Details-->
+        <div aura:id="OptyDetail" class="clsOptyDetail">
+            <lightning:card title="Opportunity Details">
+                <lightning:layout multipleRows="true">  
+                    <aura:iteration items="{!v.OptyDetails}" var="OppRec" >
+                        <lightning:layoutItem padding="around-small" size="6">  
+                            <div aura:id="Tilu" class="slds-box">
+                                <lightning:tile label="{!OppRec.Name}">
+                                    <aura:set attribute="media">
+                                        <lightning:icon iconName="standard:opportunity"/>
+                                    </aura:set>
+                                    <dl class="slds-dl_horizontal">
+                                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p>State: {!OppRec.StageName}</p>
+                                        </dd>
+                                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p>Amount: {!OppRec.Amount}</p>
+                                        </dd>                   
+                                        <dt class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p>CloseDate: {!OppRec.CloseDate}</p>
+                                        </dt>                  
+                                    </dl>
+                                </lightning:tile>
+                            </div> 
+                        </lightning:layoutItem>
+                    </aura:iteration>
+                </lightning:layout>           
+            </lightning:card>
+        </div>
+    <!-- Case Details-->
+        <div aura:id="CaseDetail" class="clsCaseDetail">
+            <lightning:card title="Case Details">
+                <lightning:layout multipleRows="true">  
+                    <aura:iteration items="{!v.CaseDetails}" var="CaseRec" >
+                        <lightning:layoutItem padding="around-small" size="6">  
+                            <div aura:id="Tilu" class="slds-box">
+                                <lightning:tile label="{!CaseRec.CaseNumber}">
+                                    <aura:set attribute="media">
+                                        <lightning:icon iconName="standard:case"/>
+                                    </aura:set>
+                                    <dl class="slds-dl_horizontal">
+                                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Contact Name: {!CaseRec.ContactId}</p>
+                                        </dd>
+                                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Type: {!CaseRec.Type}</p>
+                                        </dd>                   
+                                        <dt class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Subject: {!CaseRec.Subject}</p>
+                                        </dt>
+                                        <dt class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Status: {!CaseRec.Status}</p>
+                                        </dt>
+                                        <dt class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Priority: {!CaseRec.Priority}</p>
+                                        </dt>
+                                    </dl>
+                                </lightning:tile>
+                            </div> 
+                        </lightning:layoutItem>
+                    </aura:iteration>
+                </lightning:layout>           
+            </lightning:card>
+        </div>
+    <!-- Activites Details-->
+        <div aura:id="ActivityDetail" class="clsActivityDetail">
+            <lightning:card title="Activity Details">
+                <lightning:layout multipleRows="true">  
+                    <aura:iteration items="{!v.ActDetails}" var="ActRec" >
+                        <lightning:layoutItem padding="around-small" size="6">  
+                            <div aura:id="Tilu" class="slds-box">
+                                <lightning:tile label="{!ActRec.WhoId}">
+                                    <aura:set attribute="media">
+                                        <lightning:icon iconName="standard:action_list_component"/>
+                                    </aura:set>
+                                    <dl class="slds-dl_horizontal">
+                                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Type: {!ActRec.Type}</p>
+                                        </dd>
+                                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Subject: {!ActRec.Subject}</p>
+                                        </dd>                   
+                                        <dt class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">EndDate: {!ActRec.EndDateTime}</p>
+                                        </dt>                  
+                                    </dl>
+                                </lightning:tile>
+                            </div> 
+                        </lightning:layoutItem>
+                    </aura:iteration>
+                </lightning:layout>           
+            </lightning:card>
+        </div>
+    <!-- Orders Details-->
+        <div aura:id="OrdDetail" class="clsOrdDetail">
+            <lightning:card title="Order Details">
+                <lightning:layout multipleRows="true">  
+                    <aura:iteration items="{!v.OrdDetails}" var="OrdRec" >
+                        <lightning:layoutItem padding="around-small" size="6">  
+                            <div aura:id="Tilu" class="slds-box">
+                                <lightning:tile label="{!OrdRec.OrderNumber}">
+                                    <aura:set attribute="media">
+                                        <lightning:icon iconName="standard:order"/>
+                                    </aura:set>
+                                    <dl class="slds-dl_horizontal">
+                                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Name: {!OrdRec.Name}</p>
+                                        </dd>
+                                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Total Amount: {!OrdRec.TotalAmount}</p>
+                                        </dd>                   
+                                        <dt class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">End Date: {!OrdRec.EndDate}</p>
+                                        </dt>                  
+                                    </dl>
+                                </lightning:tile>
+                            </div> 
+                        </lightning:layoutItem>
+                    </aura:iteration>
+                </lightning:layout>           
+            </lightning:card>
+        </div>
+    <!-- Note Details-->
+        <div aura:id="NoteDetail" class="clsNoteDetail">
+            <lightning:card title="Note Details">
+                <lightning:layout multipleRows="true">  
+                    <aura:iteration items="{!v.NoteDetails}" var="NoteRec" >
+                        <lightning:layoutItem padding="around-small" size="6">  
+                            <div aura:id="Tilu" class="slds-box">
+                                <lightning:tile label="{!NoteRec.Title}">
+                                    <aura:set attribute="media">
+                                        <lightning:icon iconName="standard:note"/>
+                                    </aura:set>
+                                    <dl class="slds-dl_horizontal">
+                                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Body: {!NoteRec.body}</p>
+                                        </dd>
+                                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Created Date: {!NoteRec.createddate}</p>
+                                        </dd>                   
+                                        <dt class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Private: {!NoteRec.IsPrivate}</p>
+                                        </dt>                  
+                                    </dl>
+                                </lightning:tile>
+                            </div> 
+                        </lightning:layoutItem>
+                    </aura:iteration>
+                </lightning:layout>           
+            </lightning:card>
+        </div>
+        <!-- Attachment Details-->
+        <div aura:id="AttDetail" class="clsAttDetail">
+            <lightning:card title="Attachment Details">
+                <lightning:layout multipleRows="true">  
+                    <aura:iteration items="{!v.AttDetails}" var="AttRec" >
+                        <lightning:layoutItem padding="around-small" size="6">  
+                            <div aura:id="Tilu" class="slds-box">
+                                <lightning:tile label="{!AttRec.Name}">
+                                    <aura:set attribute="media">
+                                        <lightning:icon iconName="standard:file"/>
+                                    </aura:set>
+                                    <dl class="slds-dl_horizontal">
+                                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Body: {!AttRec.BODY}</p>
+                                        </dd>
+                                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Content Type: {!AttRec.CONTENTTYPE}</p>
+                                        </dd>                   
+                                        <dt class="slds-dl_horizontal__detail slds-tile__meta">
+                                            <p class="slds-truncate">Created Date: {!AttRec.CREATEDDATE}</p>
+                                        </dt>                  
+                                    </dl>
+                                </lightning:tile>
+                            </div> 
+                        </lightning:layoutItem>
+                    </aura:iteration>
+                </lightning:layout>           
+            </lightning:card>
+        </div>
+    </div>
+</aura:component>

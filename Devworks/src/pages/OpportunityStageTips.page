@@ -1,0 +1,34 @@
+<apex:page docType="html-5.0" standardController="Opportunity">
+    <style>
+        .mypage .quote {
+            margin: 12px 0;
+            font-size: 64px;
+            text-align: center;
+        }
+        .mypage .delta {
+            font-size: 24px;
+            text-align: center;
+            color: green;
+        }
+    </style>
+    
+    <div class="mypage">
+        <div class="quote">{!Opportunity.StageName}</div>
+        <div class="delta">Tips: 
+        {!CASE(Opportunity.StageName,'Prospecting', 'Better Opportunity to Serve', 
+            'Needs Analysis' , 'Dont forget to research more',
+            'Proposal/Price Quote' , 'Customer might interested if you attract with better price',
+            'Negotiation/Review' , 'Good Work!!!, you should expect a better output soon',
+            'You are going great!!! keep it up'
+            )}
+        </div>
+        <div>
+            <apex:outputText rendered="{!Opportunity.StageName=='Prospecting'}">Tips for prospecting</apex:outputText>
+    <apex:outputText rendered="{!Opportunity.StageName=='Needs Analysis'}">Tips for Needs Analysis</apex:outputText>
+    <apex:outputText rendered="{!Opportunity.StageName=='Proposal/Price Quote'}">Proposal/Price Quote</apex:outputText>
+    <apex:outputText rendered="{!Opportunity.StageName=='Negotiation/Review'}">Tips for Negotiation/Review</apex:outputText>
+
+        </div>
+    </div>
+    
+</apex:page>

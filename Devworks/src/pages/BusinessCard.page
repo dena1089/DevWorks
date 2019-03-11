@@ -1,0 +1,50 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+  <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="x-ua-compatible" content="ie=edge" />
+      <title>Mobile Business Card</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <!-- Import the Design System style sheet -->
+      <apex:slds />
+    </head>
+      <body>
+          <div class="slds-scope">
+              <p>
+                  Business Card
+              </p>
+              <br/>
+              <div id="contact-list" class="slds-p-vertical--medium">
+                  <dl class="slds-list_horizontal slds-wrap">
+                      <dt class="slds-item_label slds-text-color_weak slds-truncate" title="ContactNameL">First Name</dt>
+                      <dd class="slds-item_detail slds-truncate" title="ContactNameV">{!$User.FirstName}</dd>
+                      <dt class="slds-item_label slds-text-color_weak slds-truncate" title="ContactPhoneL">Last Phone</dt>
+                      <dd class="slds-item_detail slds-truncate" title="ContactPhoneV">{!$User.LastName}</dd>
+                      <dt class="slds-item_label slds-text-color_weak slds-truncate" title="ContactPhoneL">Title</dt>
+                      <dd class="slds-item_detail slds-truncate" title="ContactPhoneV">{!$User.Title}</dd>
+                      <dt class="slds-item_label slds-text-color_weak slds-truncate" title="ContactPhoneL">Phone</dt>
+                      <dd class="slds-item_detail slds-truncate" title="ContactPhoneV">{!$User.Phone}</dd>
+                      <dt class="slds-item_label slds-text-color_weak slds-truncate" title="ContactPhoneL">Email Address</dt>
+                      <dd class="slds-item_detail slds-truncate" title="ContactPhoneV">{!$User.Email}</dd>
+                  </dl>
+                  <div class="slds-form-element">
+                      <label class="slds-form-element__label slds-text-heading_medium 
+                                    slds-p-bottom_medium" for="text-input-id-1">Email Address:</label>
+                      <div class="slds-form-element__control">
+                          <input type="email" id="EmailId" class="slds-input"> </input>
+                  </div>
+                  <button class="slds-button_neutral slds-size_1-of-1 
+                         slds-m-top_x-small slds-p-bottom_x-small slds-p-top_x-small" 
+                         onclick="SendEmail()">Send Email</button>
+              </div>
+          </div>
+      </div>
+      </body>
+  </html> 
+    <script>
+        function SendEmail() {
+            var accountName = document.getElementById("EmailId").value;
+                    alert('Email Sent successfully to the address '+accountName);
+        }
+    </script>
+</apex:page>

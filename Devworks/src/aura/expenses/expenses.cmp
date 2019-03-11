@@ -1,0 +1,17 @@
+<aura:component controller="ExpensesController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:handler name="updateExpense" event="c:expensesItemUpdate" action="{!c.handleUpdateExpense}"/>
+    <aura:handler name="createExpense" event="c:expensesItemUpdate" action="{!c.handleCreateExpense}"/>
+    <aura:attribute name="expenses" type="Expense__c[]"/>
+    <!-- / PAGE HEADER -->
+        <!-- NEW EXPENSE FORM -->
+    <lightning:layout >
+        <lightning:layoutItem padding="around-small" size="6">
+            <c:expenseForm/>
+        </lightning:layoutItem>
+    </lightning:layout>
+   
+    <!-- / NEW EXPENSE FORM -->
+    <c:expensesList expenses="{!v.expenses}"/>
+
+</aura:component>

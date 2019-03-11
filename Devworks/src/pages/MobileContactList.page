@@ -1,0 +1,24 @@
+<apex:page standardController="contact" recordSetVar="contacts">
+    <head>
+      <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>Contact List Visualforce page in Salesforce Mobile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <!-- Import the Design System style sheet -->
+      <apex:slds />
+    </head>
+    <body>
+        <div class="slds-scope">
+            <apex:repeat value="{!contacts}" var="c">
+                <div id="contact-list" class="slds-p-vertical--medium">
+                <dl class="slds-list_horizontal slds-wrap">
+<dt class="slds-item_label slds-text-color_weak slds-truncate" title="ContactNameL">Contact Name</dt>
+<dd class="slds-item_detail slds-truncate" title="ContactNameV">{!c.Name}</dd>
+<dt class="slds-item_label slds-text-color_weak slds-truncate" title="ContactPhoneL">Contact Phone</dt>
+<dd class="slds-item_detail slds-truncate" title="ContactPhoneV">{!c.Phone}</dd>
+</dl>
+            </div>
+            </apex:repeat>
+        </div>
+    </body>
+</apex:page>

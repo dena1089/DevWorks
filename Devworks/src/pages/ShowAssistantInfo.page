@@ -1,0 +1,27 @@
+<apex:page standardController="Contact" showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+  <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="x-ua-compatible" content="ie=edge" />
+      <title>Contact Assistant Page in Salesforce Mobile</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <!-- Import the Design System style sheet -->
+      <apex:slds />
+    </head>
+    <body>
+      <!-- REQUIRED SLDS WRAPPER -->
+      <div class="slds-scope">
+          <div id="contact-list" class="slds-p-vertical--medium">
+                  <dl class="slds-list_horizontal slds-wrap">
+                      <dt class="slds-item_label slds-text-color_weak slds-truncate" title="ANameL">Assistant Name</dt>
+                      <dd class="slds-item_detail slds-truncate" title="ANameV">{!contact.AssistantName}</dd>
+                      <dt class="slds-item_label slds-text-color_weak slds-truncate" title="APhoneL">Assistant Phone</dt>
+                      <dd class="slds-item_detail slds-truncate" title="APhoneV">
+                          <a href="tel:">{!Contact.AssistantPhone}</a>
+                      </dd>
+              </dl>
+          </div>
+        </div>
+      </body>
+    </html>
+</apex:page>

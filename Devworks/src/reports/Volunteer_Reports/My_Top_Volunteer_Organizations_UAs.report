@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Volunteer_Shift_Worker__c.Shift_Hours__c:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <downGroupingContext>GRAND_SUMMARY</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Grand Total</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>User.Volunteer_Shift_Workers__r$Shift_Hours__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>User.Volunteer_Shift_Workers__r$Status__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Confirmed,Completed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>User.Volunteer_Shift_Workers__r$IsShiftVolunteer__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <aggregateType>Sum</aggregateType>
+        <dateGranularity>Day</dateGranularity>
+        <field>User.Volunteer_Shift_Workers__r$Volunteer_Organization__c</field>
+        <sortByName>User.Volunteer_Shift_Workers__r$Shift_Hours__c</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
+    </groupingsDown>
+    <name>My Top Volunteer Organizations</name>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>Users_with_Volunteer_Shift_Worker_Records__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <sortColumn>User.Volunteer_Shift_Workers__r$Shift_Hours__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>User$ChatterAdoptionStageModifiedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

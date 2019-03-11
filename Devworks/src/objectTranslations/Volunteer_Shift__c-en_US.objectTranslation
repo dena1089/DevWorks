@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Volunteer Shift</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Volunteer Shifts</value>
+    </caseValues>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Desired # of Volunteers --></label>
+        <name>Desired_of_Volunteers__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shift End Time --></label>
+        <name>Shift_End_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shift Hours --></label>
+        <name>Shift_Hours__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shift Start Time --></label>
+        <name>Shift_Start_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shifts Taken --></label>
+        <name>Shifts_Taken__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Vol Hours for Shift --></label>
+        <name>Total_Vol_Hours_for_Shift__c</name>
+    </fields>
+    <fields>
+        <label><!-- Volunteer Activity --></label>
+        <name>Volunteer_Activity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Volunteer Job --></label>
+        <name>Volunteer_Job__c</name>
+        <relationshipLabel><!-- Volunteer Shifts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Volunteer Organization --></label>
+        <name>Volunteer_Organization__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Volunteers Still Needed --></label>
+        <name>of_Volunteers_Still_Needed__c</name>
+    </fields>
+    <layouts>
+        <layout>Volunteer Shift Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Create New Volunteer Shift Worker --></label>
+        <name>Sign_Me_Up</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- No time travel allowed during volunteering! Shift Start Time must be before Shift End Time. --></errorMessage>
+        <name>Start_before_End</name>
+    </validationRules>
+</CustomObjectTranslation>
