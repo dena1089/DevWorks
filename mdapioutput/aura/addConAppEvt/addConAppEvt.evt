@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="conRec" type="contact"/>
+</aura:event>

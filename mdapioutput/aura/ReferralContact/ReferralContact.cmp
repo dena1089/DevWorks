@@ -1,0 +1,57 @@
+<aura:component controller="ContactDetail" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:attribute name="ConRecs" type="contact[]"/>
+    <aura:attribute name="ConFName" type="String"/>
+    <aura:attribute name="ConLName" type="String"/>
+    <aura:registerEvent name="condatacheck" type="c:condatacheck"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="fMsg" type="Boolean" default="true"/>
+    <aura:attribute name="NoRecMsg" type="Boolean" default="false"/>
+    <aura:attribute name="RecFound" type="Boolean" default="false"/>
+    <aura:attribute name="dcount" type="Integer" default="10"/>
+    <fieldset class="slds-box slds-theme--default slds-container--small">
+        <div class="c-container">
+            <lightning:layout >
+                <lightning:layoutItem padding="around-small">
+                    
+                    <lightning:Card iconName="standard:contact" title="Contact Search"/>
+                    <lightning:input name="First Name" label="First Name" value="{!v.ConFName}" />
+                    <lightning:input name="Last Name" label="Last Name" value="{!v.ConLName}"/>
+                    <lightning:input name="Email Address" label="Email Address" 
+                                     maxlength="0"
+                                     messageWhenTooLong="Please Enter FirstName or LastName"/>
+                    <lightning:input name="Phone" label="Phone Number" 
+                                     maxlength="0"
+                                     messageWhenTooLong="Please Enter FirstName or LastName"/>
+                    <lightning:input name="Record Limit" label="Record Limit" value="{!v.dcount}"/>
+                    <br/>    
+                    <lightning:button variant="brand" label="Search Contact" title="Search Contact" onclick="{! c.handleSearch }" />
+                    <lightning:button variant="brand" label="Create Contact" title="Create Contact" onclick="{! c.handleNew }" />
+                    
+                    <br/>
+                    <aura:if isTrue="{!v.RecFound}">
+                        <br/>
+                        <lightning:card title="Contact Results">
+                            <div class="slds-card slds-p-top--medium">
+                                <section class="slds-card__body">
+                                    <div id="list" class="row">
+                                        <aura:iteration items="{!v.ConRecs}" var="cmp">
+                                            <c:ReferralExistingContact ConRec="{!cmp}" ShowLink="true"/>
+                                        </aura:iteration>
+                                    </div>
+                                </section>
+                            </div>
+                        </lightning:card>       
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!v.fMsg}">
+                                <br/> Please Enter First Name and Last Name and hit the search Button!!!
+                            </aura:if>
+                            <aura:if isTrue="{!v.NoRecMsg}">
+                                <br/> No Records Found. Please proceed to create new Contact Record!!!
+                            </aura:if>
+                        </aura:set>
+                    </aura:if> 
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>	
+    </fieldset>
+</aura:component>

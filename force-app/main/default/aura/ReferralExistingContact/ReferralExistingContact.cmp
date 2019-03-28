@@ -1,0 +1,21 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:attribute name="ConRec" type ="Contact"/>
+    <aura:attribute name="ShowLink" type="boolean" default="false"/>
+    <aura:registerEvent name="addConAppEvt" type="c:addConAppEvt"/>
+    <aura:registerEvent name="aeRefRecVisible" type="c:aeRefRecVisible"/>
+    <fieldset class="slds-box slds-theme--default slds-container--small">
+    <aura:if isTrue="{!v.ShowLink}">
+    <a href="javascript:void(0)" onclick="{!c.CallAppEvt}">
+            <lightning:Card iconName="standard:contact" title="{!v.ConRec.Id}"/> 
+	</a>
+    </aura:if>
+    <aura:if isTrue="{!(v.ShowLink == false)}">
+        <lightning:Card iconName="standard:contact" title="{!v.ConRec.Id}"/> 
+    </aura:if>
+    <p>Contact Id: {!v.ConRec.Id}</p>
+    <P>First Name: {!v.ConRec.FirstName}</P>
+    <P>Last Name: {!v.ConRec.LastName}</P>
+    <p>Phone Number: {!v.ConRec.Phone}</p>
+    <p>Email Address: {!v.ConRec.Email}</p>
+    </fieldset>
+</aura:component>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Brokerage_Referral</fullName>
+    <active>true</active>
+    <label>Brokerage Referral</label>
+    <picklistValues>
+        <picklist>Loan_Purpose__c</picklist>
+        <values>
+            <fullName>Home Equity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mortgage Refinance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchase</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Referral_Detail__c</picklist>
+        <values>
+            <fullName>LEAD TO APP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MORTGAGE</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Referral_Segment__c</picklist>
+        <values>
+            <fullName>HOME EQUITY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LEAD TO APP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MORTGAGE</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Referral_Type__c</picklist>
+        <values>
+            <fullName>REFERRAL - BRANCH%2FNFSC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>REFERRAL - BROKERAGE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>REFERRAL - INVESTMENT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>REFERRAL - MORTGAGE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>REFERRAL - WEALTH</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Segment__c</picklist>
+        <values>
+            <fullName>Branch Des Lender</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Home Lending Center</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MLO</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

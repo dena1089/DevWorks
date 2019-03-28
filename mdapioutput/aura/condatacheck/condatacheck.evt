@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="aenRec" type="boolean"/>
+    <aura:attribute name="aeeRec" type="boolean"/>
+</aura:event>

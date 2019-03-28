@@ -1,0 +1,87 @@
+<aura:component controller ="ContactDetail" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:handler event="c:addConAppEvt" action="{!c.handleaddConAppEvt}"/>
+    <aura:handler event="c:aeRefRecVisible" action="{!c.handleaeRefRecVisible}"/>
+    <aura:attribute name="ConRec" type="contact"/>
+    <aura:attribute name="ShowRefRec" type="Boolean"/>
+    <aura:attribute name="RefRec" type="Referral__c" default="{'sobjectType': 'Referral__c'}"/>
+    <aura:attribute name="eRefRec" type="Referral__c"/>
+    <aura:attribute name="RecordType" type="list"/>
+    <aura:attribute name="ReferralType" type="list"/>
+    <aura:attribute name="ReferralSeg" type="list"/>
+    <aura:attribute name="ReferralDet" type="list"/>
+    <aura:attribute name="Segment" type="list"/>
+    <aura:attribute name="LoanPurpose" type="list"/>
+    <aura:attribute name="AssignTo" type="list"/>
+    <aura:attribute name="ReferralTypeVal" type="String" default=""/>
+    <aura:attribute name="RecordTypeVal" type="String" default=""/>
+    <aura:attribute name="LoanPurposeVal" type="String" default=""/>
+    <aura:attribute name="ReferralSegVal" type="String" default=""/>
+    <aura:attribute name="ReferralDetVal" type="String" default=""/>
+    <aura:attribute name="SegmentVal" type="String" default=""/>
+    <aura:attribute name="AssignToVal" type="String" default=""/>
+    <aura:attribute name="AppIdVal" type="boolean" default="false"/>
+    <aura:attribute name="AppNumVal" type="String" default=""/>
+    <aura:attribute name="NeedsIdenVal" type="String"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    
+    <aura:if isTrue="{!(v.ShowRefRec == false)}">
+        <fieldset class="slds-box slds-theme--default slds-container--small">
+            <lightning:Card iconName="action:clone" title="New Referral Form"/>
+            <form class="slds-form--stacked">
+                <lightning:select aura:id="NewReferralForm" name="RecordType" label="Record Type" value="{!v.RecordTypeVal}" required="true">
+                    <aura:iteration items="{!v.RecordType}" var="option">
+                        <option text="{!option}" value="{!(option == '--Choose One--') ? '' : option}" selected="{!option}"/>
+                    </aura:iteration>
+                </lightning:select>
+                <lightning:select aura:id="NewReferralForm" name="ReferralType" label="Referral Type" value="{!v.ReferralTypeVal}" required="true">
+                    <aura:iteration items="{!v.ReferralType}" var="option">
+                        <option text="{!option}" value="{!(option == '--Choose One--') ? '' : option}" selected="{!option}"/>
+                    </aura:iteration>
+                </lightning:select>
+                <lightning:select aura:id="NewReferralForm" name="LoanPurpose" label="Loan Purpose" value="{!v.LoanPurposeVal}" required="true">
+                    <aura:iteration items="{!v.LoanPurpose}" var="option">
+                        <option text="{!option}" value="{!(option == '--Choose One--') ? '' : option}" selected="{!option}"/>
+                    </aura:iteration>
+                </lightning:select>
+                <lightning:select aura:id="NewReferralForm" name="RefSeg" label="Referral Segment" value="{!v.ReferralSegVal}" required="true">
+                    <aura:iteration items="{!v.ReferralSeg}" var="option">
+                        <option text="{!option}" value="{!(option == '--Choose One--') ? '' : option}" selected="{!option}"/>
+                    </aura:iteration>
+                </lightning:select>
+                <lightning:select aura:id="NewReferralForm" name="RefDet" label="Referral Detail" value="{!v.ReferralDetVal}" required="true">
+                    <aura:iteration items="{!v.ReferralDet}" var="option">
+                        <option text="{!option}" value="{!(option == '--Choose One--') ? '' : option}" selected="{!option}"/>
+                    </aura:iteration>
+                </lightning:select>
+                <lightning:select aura:id="NewReferralForm" name="Segment" label="Segment" value="{!v.SegmentVal}" required="true" onchange="{! c.onChangeSeg}">
+                    <aura:iteration items="{!v.Segment}" var="option">
+                        <option text="{!option}" value="{!(option == '--Choose One--') ? '' : option}" selected="{!option}"/>
+                    </aura:iteration>
+                </lightning:select>
+                <lightning:select aura:id="NewReferralForm" name="Segment" label="Assign To" value="{!v.AssignToVal}" required="true">
+                    <aura:iteration items="{!v.AssignTo}" var="option">
+                        <option text="{!option}" value="{!(option == '--Choose One--') ? '' : option}" selected="{!option}"/>
+                    </aura:iteration>
+                </lightning:select>
+                <lightning:input aura:id="NewReferralForm" name="AppId" type="checkbox" label="Appointment Required?" checked="{!v.AppIdVal}" required="true"/>
+                <lightning:input aura:id="NewReferralForm" label="Appointment Id"
+                                 name="AppNum"
+                                 value="{!v.AppNumVal}"/>
+                <lightning:textarea aura:id="NewReferralForm" label="Needs Identification"
+                                    name="NeedsIden"
+                                    value="{!v.NeedsIdenVal}"
+                                    required="true"/>
+                <lightning:button label="Create Referral" 
+                                  class="slds-align_absolute-center slds-m-top--medium"
+                                  variant="success"
+                                  onclick="{!c.clickCreateItem}"/>
+            </form>
+        </fieldset>
+    </aura:if>
+    <aura:if isTrue="{!(v.ShowRefRec == true)}">
+        <fieldset class="slds-box slds-theme--default slds-container--small">
+            <c:ReferralDataVisible simpleRecord="{!v.eRefRec}" RecordTypeVal="{!v.RecordTypeVal}"/>
+        </fieldset>
+    </aura:if>
+    
+</aura:component>

@@ -1,0 +1,45 @@
+<aura:component controller ="ContactDetail" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:attribute name="ConRec" type ="Contact" default="{'sobjectType': 'contact', 'FirstName':'','LastName':'','Email':'','Phone':''}"/>
+    <aura:registerEvent name="addConAppEvt" type="c:addConAppEvt"/>
+    <aura:registerEvent name="aeRefRecVisible" type="c:aeRefRecVisible"/>
+    <aura:handler event="c:condatacheck" action="{!c.handlecondatacheck}"/>
+    <aura:handler event="c:addConAppEvt" action="{!c.handleaddConAppEvt}"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="nRec" type="boolean" default="true"/>
+    <aura:attribute name="eRec" type="boolean"/>
+    <aura:attribute name="eConRec" type="contact"/>
+    <aura:attribute name="cFName" type="String"/>
+    <aura:attribute name="cLName" type="String"/>
+    <aura:attribute name="cEmail" type="String"/>
+    <aura:attribute name="cPhone" type="String"/>
+    <fieldset class="slds-box slds-theme--default slds-container--small">
+    <aura:if isTrue="{!v.nRec}">
+            <lightning:Card iconName="standard:contact" title="New Contact Form"/>
+            <form class="slds-form--stacked">          
+                <lightning:input aura:id="NewContactForm" label="First Name"
+                                 name="FirstName"
+                                 value="{!v.cFName}"
+                                 required="true"/> 
+                <lightning:input aura:id="NewContactForm" label="Last Name"
+                                 name="FirstName"
+                                 value="{!v.cLName}"
+                                 required="true"/>
+                <lightning:input aura:id="NewContactForm" label="Email Address"
+                                 name="Email"
+                                 value="{!v.cEmail}"
+                                 required="true"/>
+                <lightning:input aura:id="NewContactForm" label="Phone Number"
+                                 name="PhoneNumber"
+                                 value="{!v.cPhone}"
+                                 required="true"/>
+                <lightning:button label="Save Contact" 
+                                  class="slds-align_absolute-center slds-m-top--medium"
+                                  variant="success"
+                                  onclick="{!c.clickCreateItem}"/>
+            </form> 
+        </aura:if>
+        <aura:if isTrue="{!and(v.eRec ==true)}">
+            <c:ReferralExistingContact ConRec="{!v.eConRec}" ShowLink="false"/>
+        </aura:if>
+    </fieldset>
+</aura:component>

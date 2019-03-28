@@ -1,0 +1,41 @@
+<aura:component controller ="ContactDetail" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:attribute name="simpleRecord" type="Referral__c"/>
+    <aura:attribute name="RecordTypeVal" type="String"/>
+    <fieldset class="slds-box slds-theme--default slds-container--small">
+        <lightning:card>
+        <a href="javascript:void(0)" onclick="{!c.CallNavigation}">
+        <lightning:card iconName="action:clone" title="{!(v.RecordTypeVal + '-'+ v.simpleRecord.Id) }" >
+            </lightning:card>
+            </a>
+            <div class="slds-p-horizontal--small">
+                <p class="slds-text-heading--small">
+                    <ui:inputText label="Referral Type" class="field" disabled="true" value="{!v.simpleRecord.Referral_Type__c}"/>
+                </p>
+                <p class="slds-text-heading--small">
+                    <ui:inputText label="Loan Purpose" class="field" disabled="true" value="{!v.simpleRecord.Loan_Purpose__c}"/>
+                </p>
+                <p class="slds-text-heading--small">
+                    <ui:inputText label="Referral Segment" class="field"  disabled="true" value="{!v.simpleRecord.Referral_Segment__c}"/>
+                </p>
+                <p class="slds-text-heading--small">
+                    <ui:inputText label="Referral Detail" class="field" disabled="true" value="{!v.simpleRecord.Referral_Detail__c}"/>
+                </p>
+                <p class="slds-text-heading--small">
+                    <ui:inputText label="Segment" class="field" disabled="true" value="{!v.simpleRecord.Segment__c}"/>
+                </p>
+                <p class="slds-text-heading--small">
+                    <ui:inputText label="Assigned To" class="field" disabled="true" value="{!v.simpleRecord.Referral_Type__c}"/>
+                </p>
+                <p class="slds-text-heading--small">
+                    Appointment Required? : <ui:outputCheckbox aura:id="output" value="{!v.simpleRecord.Appointment_Required__c}"/>                        
+                </p>
+                <p class="slds-text-heading--small">
+                    <ui:inputText label="Appointment Id" class="field" disabled="true" value="{!v.simpleRecord.Appointment_Id__c}"/>
+                </p>
+                <p class="slds-text-heading--small">
+                    <ui:inputTextArea aura:id="comments" label="Needs Identification" disabled="true" value="{!v.simpleRecord.Need_Identification__c}" rows="5"/>
+                </p>
+            </div>
+        </lightning:card>
+    </fieldset>
+</aura:component>

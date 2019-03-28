@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Appointment_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISBLANK( Appointment_Id__c ), Appointment_Required__c)</errorConditionFormula>
+    <errorDisplayField>Appointment_Id__c</errorDisplayField>
+    <errorMessage>Please enter the Appointment Id</errorMessage>
+</ValidationRule>
